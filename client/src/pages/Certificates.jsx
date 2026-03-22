@@ -305,7 +305,7 @@ const Certificates = () => {
       <ResumeModal 
         isOpen={!!selectedCert} 
         onClose={() => setSelectedCert(null)} 
-        pdfUrl={selectedCert ? `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/cert/${encodeURIComponent(selectedCert.file)}` : ''}
+        pdfUrl={selectedCert ? `/certificates/${encodeURIComponent(selectedCert.file)}` : ''}
         title={selectedCert ? `${selectedCert.title}.pdf` : ''}
       />
     </main>

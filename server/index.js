@@ -26,39 +26,6 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// Resume Download Endpoint
-app.get('/api/resume', (req, res) => {
-  const resumePath = path.join(__dirname, '..', 'resume.pdf');
-  if (fs.existsSync(resumePath)) {
-    res.setHeader('Content-Type', 'application/pdf');
-    res.setHeader('Content-Disposition', 'inline; filename="resume.pdf"');
-    fs.createReadStream(resumePath).pipe(res);
-  } else {
-    res.status(404).json({ error: 'Resume not found' });
-  }
-});
-
-// Certificate Download Endpoint
-app.get('/api/cert/:name', (req, res) => {
-  const certName = req.params.name;
-  const certPath = path.join(__dirname, '..', 'certificates', `${certName}.pdf`);
-  
-  if (fs.existsSync(certPath)) {
-    res.setHeader('Content-Type', 'application/pdf');
-    res.setHeader('Content-Disposition', `inline; filename="${certName}.pdf"`);
-    fs.createReadStream(certPath).pipe(res);
-  } else {
-    // Fallback: serve the resume PDF as a placeholder, but spoof the filename so it looks like the exact certificate
-    const fallbackPath = path.join(__dirname, '..', 'resume.pdf');
-    if (fs.existsSync(fallbackPath)) {
-      res.setHeader('Content-Type', 'application/pdf');
-      res.setHeader('Content-Disposition', `inline; filename="${certName}.pdf"`);
-      fs.createReadStream(fallbackPath).pipe(res);
-    } else {
-      res.status(404).json({ error: 'Certificate not found' });
-    }
-  }
-});
 
 // Contact Form Endpoint
 app.post('/api/contact', async (req, res) => {

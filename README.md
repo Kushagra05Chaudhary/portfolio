@@ -18,8 +18,8 @@ A full-stack **MERN** portfolio application built with a **Vite + React** fronte
 |---|---|
 | 🎨 Premium Dark UI | Glassmorphism, gradient text, animated orbs, particle canvas |
 | 🧭 Multi-Page Routing | Home, About, Skills, Projects, Certificates, Let's Talk |
-| 📄 Resume Viewer | In-browser PDF preview with download via `/api/resume` |
-| 🏅 Certificate Viewer | Per-certificate PDF served via `/api/cert/:name` |
+| 📄 Resume Viewer | In-browser PDF preview with download |
+| 🏅 Certificate Viewer | Per-certificate PDF gallery |
 | 📬 Contact Form | Saves to MongoDB + sends styled email notification via Nodemailer |
 | 🖱️ Custom Cursor | Magnetic cursor with hover effects |
 | 📈 Skill Graph | Interactive animated skill visualization |
@@ -55,7 +55,11 @@ A full-stack **MERN** portfolio application built with a **Vite + React** fronte
 portfolio/
 ├── client/                  # Vite + React frontend
 │   ├── public/
-│   │   └── icons.svg
+│   │   ├── icons.svg
+│   │   ├── hero_bg.png
+│   │   ├── profile_image.png
+│   │   ├── resume.pdf
+│   │   └── certificates/
 │   ├── src/
 │   │   ├── assets/          # Static images
 │   │   ├── components/
@@ -88,16 +92,7 @@ portfolio/
 │   ├── .env.example         # Environment variable template
 │   └── package.json
 │
-├── certificates/            # Certificate PDFs (served via API)
-│   ├── Computational_Theory_&_Finite_Automata.pdf
-│   ├── Computer_Communications_Specialization.pdf
-│   ├── Computer_Networking_Fundamentals.pdf
-│   ├── Digital_Systems_Logic_to_Processors.pdf
-│   └── Introduction_to_Hardware_&_Operating_Systems.pdf
-│
-├── resume.pdf               # Served via /api/resume
-├── hero_bg.png
-├── profile_image.png
+
 ├── .gitignore
 └── README.md
 ```
@@ -108,8 +103,6 @@ portfolio/
 
 | Method | Endpoint | Description |
 |---|---|---|
-| `GET` | `/api/resume` | Streams `resume.pdf` inline |
-| `GET` | `/api/cert/:name` | Streams a certificate PDF by name (fallback to resume) |
 | `POST` | `/api/contact` | Saves message to MongoDB + sends email to owner |
 
 ### Contact Form Payload
@@ -232,7 +225,6 @@ node index.js      # Start the Express server
 - **Frontend:** Deploy the `client/` folder to **Vercel** or **Netlify** (set `VITE_API_URL` env var pointing to your backend)
 - **Backend:** Deploy the `server/` folder to **Railway**, **Render**, or **Fly.io**
 - **Database:** Use **MongoDB Atlas** for cloud MongoDB
-- Place `resume.pdf` and `certificates/` in the same relative location to the server (`../resume.pdf`, `../certificates/`)
 
 ---
 
