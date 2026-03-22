@@ -100,9 +100,9 @@ const Projects = () => {
 const ProjectCard = ({ delay, tag, title, desc, bullets, tech }) => (
   <article className="project-card reveal-up glass-card" style={{ '--delay': delay, display: 'flex', flexDirection: 'column', gap: '16px', padding: 'max(20px, 4vw)' }}>
     <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-      <span style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: '11px', color: 'rgba(214, 143, 85, 0.9)', background: 'rgba(214, 143, 85, 0.08)', border: '1px solid rgba(214, 143, 85, 0.15)', padding: '2px 8px', borderRadius: '4px', letterSpacing: '0.02em', textTransform: 'uppercase', truncate: 'none', WebkitLineClamp: 1, overflow: 'hidden', textOverflow: 'ellipsis' }}>{tag}</span>
+      <span style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: '11px', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--clr-accent-dark)', background: 'rgba(127,179,213,0.12)', border: '1px solid rgba(127,179,213,0.22)', borderRadius: '100px', padding: '3px 10px', truncate: 'none', WebkitLineClamp: 1, overflow: 'hidden', textOverflow: 'ellipsis' }}>{tag}</span>
     </div>
-    <h3 style={{ fontFamily: '"Space Grotesk", sans-serif', fontSize: '22px', fontWeight: 600, letterSpacing: '-0.02em', color: 'var(--clr-text-primary)' }}>{title}</h3>
+    <h3 style={{ fontFamily: '"Space Grotesk", sans-serif', fontSize: '22px', fontWeight: 700, letterSpacing: '-0.02em', color: 'var(--clr-text-primary)' }}>{title}</h3>
     <p style={{ fontSize: '14px', lineHeight: 1.65, color: 'var(--clr-text-sec)' }}>{desc}</p>
     <ul className="project-bullet-list">
       {bullets.map((b, i) => <li key={i}>{b}</li>)}

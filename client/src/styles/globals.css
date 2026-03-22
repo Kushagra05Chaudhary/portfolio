@@ -325,8 +325,6 @@ strong {
 .reveal-up {
   opacity: 0;
   transform: translateY(28px);
-}
-.reveal-up.in-view {
   animation: revealUpAnim 0.75s var(--ease-expo) forwards;
   animation-delay: var(--delay, 0s);
 }
@@ -334,8 +332,6 @@ strong {
 .reveal-fade {
   opacity: 0;
   transform: translateY(12px);
-}
-.reveal-fade.in-view {
   animation: revealUpAnim 0.75s var(--ease-expo) forwards;
   animation-delay: var(--delay, 0s);
 }

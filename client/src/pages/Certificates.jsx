@@ -1,9 +1,6 @@
 import { useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import ResumeModal from '../components/ResumeModal';
-import { useScrollReveal } from '../hooks/useScrollReveal';
-import { useMouseGlow } from '../hooks/useMouseGlow';
-import '../styles/About.css';
 
 const Certificates = () => {
   const [selectedCert, setSelectedCert] = useState(null);
@@ -22,7 +19,7 @@ const Certificates = () => {
       title: 'Digital Systems: Logic to Processors',
       institution: 'Universitat Autònoma de Barcelona (Coursera)',
       focus: 'Foundational computer architecture and processor design.',
-      year: '2023',
+      year: '2024',
       file: 'Digital_Systems_Logic_to_Processors.pdf'
     },
     {
@@ -30,7 +27,7 @@ const Certificates = () => {
       title: 'Introduction to Hardware & Operating Systems',
       institution: 'IBM (Coursera)',
       focus: 'OS structures and system resource management.',
-      year: '2023',
+      year: '2024',
       file: 'Introduction_to_Hardware_and_Operating_Systems.pdf'
     },
     {
@@ -38,7 +35,7 @@ const Certificates = () => {
       title: 'Computational Theory & Finite Automata',
       institution: 'Infosys Springboard',
       focus: 'Formal logic and theoretical foundations of computation.',
-      year: '2024',
+      year: '2025',
       file: 'Computational_Theory_and_Finite_Automata.pdf'
     },
     {
@@ -57,7 +54,7 @@ const Certificates = () => {
       title: 'Generative AI Fundamentals',
       institution: 'NASSCOM / Infosys',
       focus: 'Modern AI workflows and applied intelligence tools.',
-      year: '2024',
+      year: '2025',
       file: 'Generative_AI_Fundamentals.pdf'
     }
   ];
