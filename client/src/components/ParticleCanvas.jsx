@@ -20,9 +20,9 @@ class Particle {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
     const alpha = this.a * (0.8 + 0.5 * Math.sin(this.phase)); // Increased base alpha
-    const r = isDark ? 80 : 30;
-    const g = isDark ? 140 : 58;
-    const b = isDark ? 255 : 138;
+    const r = isDark ? 214 : 26;
+    const g = isDark ? 143 : 47;
+    const b = isDark ? 85 : 76;
     ctx.fillStyle = `rgba(${r},${g},${b},${alpha * (isDark ? 1 : 1)})`; // Higher max opacity
     ctx.fill();
   }
@@ -85,9 +85,9 @@ const ParticleCanvas = () => {
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
             const alpha = (1 - d / 110) * (isDark ? 0.20 : 0.4); // Icy blue lines
-            const cr = isDark ? 255 : 170;
-            const cg = isDark ? 255 : 205;
-            const cb = isDark ? 255 : 250;
+            const cr = isDark ? 214 : 26;
+            const cg = isDark ? 143 : 47;
+            const cb = isDark ? 85 : 76;
             ctx.strokeStyle = `rgba(${cr},${cg},${cb},${alpha})`;
             ctx.lineWidth = 1.0; // Slightly thicker lines
             ctx.stroke();

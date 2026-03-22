@@ -4,21 +4,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap');
 
 :root {
-  /* LIGHT MODE (Primary BG: #F4F9FF, Secondary BG: #D6E8F9) matching hero_bg.png */
+  /* LIGHT MODE (Primary BG: #F4F5F7, Secondary BG: #E2E4EB) matching image bg */
   --clr-primary: #1A2F4C;
-  --clr-accent: #4F8CFF;
-  --clr-accent-dark: #3b74db;
-  --clr-bg-start: #F4F9FF;
-  --clr-bg-end: #D6E8F9;
+  --clr-accent: #D68F55;
+  --clr-accent-dark: #B57038;
+  --clr-bg-start: #F4F5F7;
+  --clr-bg-end: #E2E4EB;
   --clr-glass: rgba(255, 255, 255, 0.45);
   --clr-glass-hover: rgba(255, 255, 255, 0.8);
   --clr-border: rgba(255, 255, 255, 0.8);
-  --clr-border-hover: rgba(79, 140, 255, 0.4);
+  --clr-border-hover: rgba(214, 143, 85, 0.4);
   --clr-text-primary: #1A2F4C;
   --clr-text-sec: #4A658A;
   --clr-text-muted: #7A96BB;
   --clr-shadow: rgba(0, 0, 0, 0.05);
-  --clr-glow: rgba(130, 185, 250, 0.4);
+  --clr-glow: rgba(214, 143, 85, 0.4);
 
   --radius-sm: 8px;
   --radius-md: 16px;
@@ -40,21 +40,21 @@
 }
 
 [data-theme="dark"] {
-  /* DARK MODE (Primary BG: #0B1220, Secondary BG: #121A2F) */
-  --clr-primary: #121A2F;      
-  --clr-accent: #4F8CFF;       
-  --clr-accent-dark: #7FB3FF;  
-  --clr-bg-start: #0B1220;     
-  --clr-bg-end: #121A2F;       
+  /* DARK MODE (Primary BG: #0A0F1D, Secondary BG: #1A2F4C) */
+  --clr-primary: #1A2F4C;      
+  --clr-accent: #D68F55;       
+  --clr-accent-dark: #EBB07F;  
+  --clr-bg-start: #0A0F1D;     
+  --clr-bg-end: #1A2F4C;       
   --clr-glass: rgba(255, 255, 255, 0.05);
   --clr-glass-hover: rgba(255, 255, 255, 0.08);
   --clr-border: rgba(255, 255, 255, 0.08);
-  --clr-border-hover: rgba(79, 140, 255, 0.4);
+  --clr-border-hover: rgba(214, 143, 85, 0.4);
   --clr-text-primary: #E6ECFF;
   --clr-text-sec: #9FB0D4;
   --clr-text-muted: #5A6D8C;   
   --clr-shadow: rgba(0, 0, 0, 0.5);
-  --clr-glow: rgba(79, 140, 255, 0.25);
+  --clr-glow: rgba(214, 143, 85, 0.25);
 }
 
 /* ── Reset ──────────────────────────────────────────────────────── */
