@@ -18,55 +18,55 @@ const Home = () => {
         <div className="hero-content" style={{ position: 'relative', zIndex: 2, width: '100%', maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))', gap: '40px', alignItems: 'center' }}>
           <div className="hero-text-block" style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
             <div className="hero-badge reveal-fade" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'var(--clr-glass)', border: '1px solid var(--clr-border)', backdropFilter: 'blur(12px)', borderRadius: '100px', padding: '8px 18px', fontSize: '13px', fontWeight: 500, color: 'var(--clr-text-sec)', width: 'auto', maxWidth: '100%', boxShadow: 'var(--shadow-sm)', flexWrap: 'wrap' }}>
-            <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#4CAF90', boxShadow: '0 0 0 3px rgba(76,175,144,0.25)' }}></span>
-            <span>Available for internships & engineering opportunities</span>
-          </div>
-
-          <h1 className="hero-headline" style={{ fontFamily: '"Space Grotesk", sans-serif', fontSize: 'clamp(42px, 10vw, 96px)', lineHeight: 1.05, letterSpacing: '-0.03em', color: 'var(--clr-text-primary)', display: 'flex', flexDirection: 'column', gap: '0.05em', wordWrap: 'break-word', overflowWrap: 'break-word' }}>
-            <span className="reveal-fade" style={{ fontWeight: 900 }}>Engineering</span>
-            <span className="reveal-fade" style={{ color: 'transparent', WebkitTextStroke: '2px var(--clr-text-primary)', textShadow: '0 0 20px rgba(255,255,255,0.1)', fontWeight: 800, animationDelay: '0.1s', lineHeight: 1.2, whiteSpace: 'normal', wordBreak: 'break-word' }}>Real-World Systems</span>
-            <span className="reveal-fade" style={{ fontWeight: 800, background: 'linear-gradient(135deg, var(--clr-text-primary) 20%, var(--clr-accent) 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', animationDelay: '0.2s' }}>That Scale.</span>
-          </h1>
-
-          <p className="hero-sub reveal-fade" style={{ fontSize: 'clamp(16px, 1.5vw, 18px)', lineHeight: 1.7, color: 'var(--clr-text-sec)', maxWidth: '640px', animationDelay: '0.3s' }}>
-             I’m <strong>Kushagra Chaudhary</strong> — a computer science student focused on building scalable full-stack applications, secure real-time communication systems, and performance-driven backend architectures.
-             <span style={{ display: 'block', marginTop: '10px', fontFamily: '"JetBrains Mono", monospace', fontSize: '12px', letterSpacing: '0.05em', color: 'var(--clr-text-muted)' }}>
-               Full-Stack Development · System Design · Real-Time Systems · Backend Engineering
-             </span>
-           </p>
-
-          <div className="hero-ctas reveal-fade-slow" style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', animationDelay: '0.4s' }}>
-            <a href="#projects" className="btn btn-primary" data-magnetic>
-              <span className="btn-text">View Projects</span>
-            </a>
-            <button onClick={() => setIsResumeOpen(true)} className="btn btn-ghost" data-magnetic>
-              <span className="btn-text">Download Resume</span>
-            </button>
-          </div>
-
-          <div className="tech-ticker reveal-fade-slow" style={{ display: 'flex', alignItems: 'center', gap: '24px', maxWidth: '100%', animationDelay: '0.5s', marginTop: '12px' }}>
-            <div style={{ flexShrink: 0, display: 'flex', alignItems: 'center' }}>
-               <span style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: '10px', fontWeight: 500, letterSpacing: '0.15em', color: 'var(--clr-text-muted)', whiteSpace: 'nowrap' }}>STACK</span>
+              <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#4CAF90', boxShadow: '0 0 0 3px rgba(76,175,144,0.25)' }}></span>
+              <span>Available for internships & engineering opportunities</span>
             </div>
-            
-            {/* Mask container to prevent overlap and provide fade effect */}
-            <div style={{ overflow: 'hidden', flex: 1, maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)', padding: '24px 0' }}>
-              <div style={{ display: 'flex', gap: '16px', whiteSpace: 'nowrap', width: 'max-content', animation: 'tickerScroll 35s linear infinite' }}>
-                {['React', 'Node.js', 'MongoDB', 'TypeScript', 'WebRTC', 'Socket.io', 'System Design'].map((skill, i) => (
-                  <div key={`${i}-${skill}`} className="tech-pill" style={{ animation: 'floatGentle 4s ease-in-out infinite', animationDelay: `${(i % 5) * 0.3}s` }}>{skill}</div>
-                ))}
-                {/* Duplicate array for seamless scrolling */}
-                {['React', 'Node.js', 'MongoDB', 'TypeScript', 'WebRTC', 'Socket.io', 'System Design'].map((skill, i) => (
-                  <div key={`dup-${i}-${skill}`} className="tech-pill" style={{ animation: 'floatGentle 4s ease-in-out infinite', animationDelay: `${(i % 5) * 0.3}s` }}>{skill}</div>
-                ))}
+
+            <h1 className="hero-headline" style={{ fontFamily: '"Space Grotesk", sans-serif', fontSize: 'clamp(42px, 10vw, 96px)', lineHeight: 1.05, letterSpacing: '-0.03em', color: 'var(--clr-text-primary)', display: 'flex', flexDirection: 'column', gap: '0.05em', wordWrap: 'break-word', overflowWrap: 'break-word' }}>
+              <span className="reveal-fade" style={{ fontWeight: 900 }}>Engineering</span>
+              <span className="reveal-fade" style={{ color: 'transparent', WebkitTextStroke: '2px var(--clr-text-primary)', textShadow: '0 0 20px rgba(255,255,255,0.1)', fontWeight: 800, animationDelay: '0.1s', lineHeight: 1.2, whiteSpace: 'normal', wordBreak: 'break-word' }}>Real-World Systems</span>
+              <span className="reveal-fade" style={{ fontWeight: 800, background: 'linear-gradient(135deg, var(--clr-text-primary) 20%, var(--clr-accent) 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', animationDelay: '0.2s' }}>That Scale.</span>
+            </h1>
+
+            <p className="hero-sub reveal-fade" style={{ fontSize: 'clamp(16px, 1.5vw, 18px)', lineHeight: 1.7, color: 'var(--clr-text-sec)', maxWidth: '640px', animationDelay: '0.3s' }}>
+              I'm <strong>Kushagra Chaudhary</strong> — a computer science student focused on building scalable full-stack applications, secure real-time communication systems, and performance-driven backend architectures.
+              <span style={{ display: 'block', marginTop: '10px', fontFamily: '"JetBrains Mono", monospace', fontSize: '12px', letterSpacing: '0.05em', color: 'var(--clr-text-muted)' }}>
+                Full-Stack Development · System Design · Real-Time Systems · Backend Engineering
+              </span>
+            </p>
+
+            <div className="hero-ctas reveal-fade-slow" style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', animationDelay: '0.4s' }}>
+              <a href="#projects" className="btn btn-primary" data-magnetic>
+                <span className="btn-text">View Projects</span>
+              </a>
+              <button onClick={() => setIsResumeOpen(true)} className="btn btn-ghost" data-magnetic>
+                <span className="btn-text">Download Resume</span>
+              </button>
+            </div>
+
+            <div className="tech-ticker reveal-fade-slow" style={{ display: 'flex', alignItems: 'center', gap: '24px', maxWidth: '100%', animationDelay: '0.5s', marginTop: '12px' }}>
+              <div style={{ flexShrink: 0, display: 'flex', alignItems: 'center' }}>
+                <span style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: '10px', fontWeight: 500, letterSpacing: '0.15em', color: 'var(--clr-text-muted)', whiteSpace: 'nowrap' }}>STACK</span>
+              </div>
+
+              {/* Mask container to prevent overlap and provide fade effect */}
+              <div style={{ overflow: 'hidden', flex: 1, maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)', padding: '24px 0' }}>
+                <div style={{ display: 'flex', gap: '16px', whiteSpace: 'nowrap', width: 'max-content', animation: 'tickerScroll 35s linear infinite' }}>
+                  {['React', 'Node.js', 'MongoDB', 'TypeScript', 'WebRTC', 'Socket.io', 'System Design'].map((skill, i) => (
+                    <div key={`${i}-${skill}`} className="tech-pill" style={{ animation: 'floatGentle 4s ease-in-out infinite', animationDelay: `${(i % 5) * 0.3}s` }}>{skill}</div>
+                  ))}
+                  {/* Duplicate array for seamless scrolling */}
+                  {['React', 'Node.js', 'MongoDB', 'TypeScript', 'WebRTC', 'Socket.io', 'System Design'].map((skill, i) => (
+                    <div key={`dup-${i}-${skill}`} className="tech-pill" style={{ animation: 'floatGentle 4s ease-in-out infinite', animationDelay: `${(i % 5) * 0.3}s` }}>{skill}</div>
+                  ))}
+                </div>
               </div>
             </div>
+
+            <div className="hero-visual-block reveal-fade-slow" style={{ display: 'flex', justifyContent: 'center', animationDelay: '0.3s', padding: '20px 0' }}>
+              <CyberHUD imageUrl="/profile_image.png" />
+            </div>
           </div>
-          
-          <div className="hero-visual-block reveal-fade-slow" style={{ display: 'flex', justifyContent: 'center', animationDelay: '0.3s', padding: '20px 0' }}>
-            <CyberHUD imageUrl="/profile_image.png" />
-          </div>
-        </div>
       </section>
 
       <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
