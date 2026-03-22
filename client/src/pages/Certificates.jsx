@@ -6,56 +6,56 @@ const Certificates = () => {
   const [selectedCert, setSelectedCert] = useState(null);
 
   const primaryTrack = [
-    { 
-      icon: '🌐', 
-      title: 'Computer Communications Specialization', 
+    {
+      icon: '🌐',
+      title: 'Computer Communications Specialization',
       institution: 'University of Colorado (Coursera)',
       focus: 'Core networking, TCP/IP, and distributed systems.',
       year: '2024',
-      file: 'Computer_Communications_Specialization'
+      file: 'Computer_Communications_Specialization.pdf'
     },
-    { 
-      icon: '⚙️', 
-      title: 'Digital Systems: Logic to Processors', 
+    {
+      icon: '⚙️',
+      title: 'Digital Systems: Logic to Processors',
       institution: 'Universitat Autònoma de Barcelona (Coursera)',
       focus: 'Foundational computer architecture and processor design.',
       year: '2023',
-      file: 'Digital_Systems_Logic_to_Processors'
+      file: 'Digital_Systems_Logic_to_Processors.pdf'
     },
-    { 
-      icon: '💻', 
-      title: 'Introduction to Hardware & Operating Systems', 
+    {
+      icon: '💻',
+      title: 'Introduction to Hardware & Operating Systems',
       institution: 'IBM (Coursera)',
       focus: 'OS structures and system resource management.',
       year: '2023',
-      file: 'Introduction_to_Hardware_and_Operating_Systems'
+      file: 'Introduction_to_Hardware_and_Operating_Systems.pdf'
     },
-    { 
-      icon: '🧮', 
-      title: 'Computational Theory & Finite Automata', 
+    {
+      icon: '🧮',
+      title: 'Computational Theory & Finite Automata',
       institution: 'Infosys Springboard',
       focus: 'Formal logic and theoretical foundations of computation.',
       year: '2024',
-      file: 'Computational_Theory_and_Finite_Automata'
+      file: 'Computational_Theory_and_Finite_Automata.pdf'
     },
-    { 
-      icon: '📡', 
-      title: 'Computer Networking Fundamentals', 
+    {
+      icon: '📡',
+      title: 'Computer Networking Fundamentals',
       institution: 'Google (Coursera)',
       focus: 'Practical internet architecture and protocols.',
       year: '2024',
-      file: 'Computer_Networking_Fundamentals'
+      file: 'Computer_Networking_Fundamentals.pdf'
     }
   ];
 
   const secondaryTrack = [
-    { 
-      icon: '🧠', 
-      title: 'Generative AI Fundamentals', 
+    {
+      icon: '🧠',
+      title: 'Generative AI Fundamentals',
       institution: 'NASSCOM / Infosys',
       focus: 'Modern AI workflows and applied intelligence tools.',
       year: '2024',
-      file: 'Generative_AI_Fundamentals'
+      file: 'Generative_AI_Fundamentals.pdf'
     }
   ];
 
@@ -72,7 +72,7 @@ const Certificates = () => {
           </div>
 
           <div className="timeline-grid">
-            
+
             {/* Primary Track */}
             <div className="track-column">
               <h3 className="track-title reveal-up">Systems & Networking Foundations</h3>
@@ -302,9 +302,9 @@ const Certificates = () => {
         }
       `}</style>
 
-      <ResumeModal 
-        isOpen={!!selectedCert} 
-        onClose={() => setSelectedCert(null)} 
+      <ResumeModal
+        isOpen={!!selectedCert}
+        onClose={() => setSelectedCert(null)}
         pdfUrl={selectedCert ? `/certificates/${encodeURIComponent(selectedCert.file)}` : ''}
         title={selectedCert ? `${selectedCert.title}.pdf` : ''}
       />
