@@ -343,6 +343,16 @@ strong {
   }
 }
 
+.hero-container {
+  padding: 0 40px;
+}
+.glass-orb-1 {
+  width: 560px; height: 560px; top: -120px; right: -100px;
+}
+.glass-orb-2 {
+  width: 400px; height: 400px; bottom: 10%; left: -60px;
+}
+
 @media (max-width: 768px) {
   :root {
     --section-gap: 80px;
@@ -354,5 +364,17 @@ strong {
 
   .section {
     padding: 80px 20px;
+  }
+  
+  .hero-container {
+    padding: 0 20px !important;
+  }
+  
+  .glass-orb-1 {
+    width: 320px !important; height: 320px !important; top: -50px !important; right: -50px !important;
+  }
+  
+  .glass-orb-2 {
+    width: 260px !important; height: 260px !important; bottom: 5% !important; left: -30px !important;
   }
 }

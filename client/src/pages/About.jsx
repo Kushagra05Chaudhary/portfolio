@@ -31,7 +31,7 @@ const About = () => {
             </h2>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '20px', marginBottom: '100px', alignItems: 'stretch' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: '20px', marginBottom: '100px', alignItems: 'stretch' }}>
             <div className="philo-card glass-card reveal-up" style={{ padding: '32px', display: 'flex', flexDirection: 'column' }}>
               <div style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: '11px', letterSpacing: '0.15em', color: 'var(--clr-accent-dark)', background: 'rgba(127,179,213,0.10)', border: '1px solid rgba(127,179,213,0.22)', borderRadius: '100px', padding: '4px 12px', width: 'fit-content', marginBottom: '14px' }}>01</div>
               <h3 style={{ fontFamily: '"Space Grotesk", sans-serif', fontSize: '20px', fontWeight: 700, color: 'var(--clr-text-primary)' }}>Learn → Build → Refine</h3>

@@ -13,11 +13,11 @@ const Projects = () => {
             <p className="section-desc">Projects built with deliberate architecture decisions and real-world scale in mind.</p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '24px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))', gap: '24px' }}>
             
             {/* Project 1 - Featured (AskRen) */}
-            <article className="project-card reveal-up" style={{ gridColumn: '1 / -1', background: 'var(--clr-glass)', backdropFilter: 'blur(20px)', border: '1px solid var(--clr-border)', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-md)', overflow: 'hidden', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '0' }}>
-              <div style={{ padding: '40px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            <article className="project-card reveal-up" style={{ gridColumn: '1 / -1', background: 'var(--clr-glass)', backdropFilter: 'blur(20px)', border: '1px solid var(--clr-border)', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-md)', overflow: 'hidden', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))', gap: '0' }}>
+              <div style={{ padding: 'max(20px, 4vw)', display: 'flex', flexDirection: 'column', gap: '16px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <span style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: '11px', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--clr-accent-dark)', background: 'rgba(127,179,213,0.12)', border: '1px solid rgba(127,179,213,0.22)', borderRadius: '100px', padding: '3px 10px' }}>Full-Stack MERN Application</span>
                 </div>
@@ -42,10 +42,10 @@ const Projects = () => {
                   <a href="#" className="proj-link btn-ghost" style={{ padding: '8px 16px', borderRadius: '100px', fontSize: '13px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '6px' }}><Github size={16} /> GitHub</a>
                 </div>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '40px', background: 'linear-gradient(135deg, var(--clr-glass) 0%, transparent 60%)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 'max(20px, 4vw)', background: 'linear-gradient(135deg, var(--clr-glass) 0%, transparent 60%)', flexWrap: 'wrap' }}>
                  {/* Decorative architecture diagram */}
-                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', background: 'var(--clr-glass)', backdropFilter: 'blur(12px)', border: '1px solid var(--clr-border)', borderRadius: 'var(--radius-md)', padding: '20px 24px', boxShadow: 'var(--shadow-sm)' }}>
-                    <div style={{ padding: '9px 14px', borderRadius: '10px', fontFamily: '"JetBrains Mono", monospace', fontSize: '12px', background: 'rgba(167,199,231,0.15)', border: '1px solid var(--clr-border)', color: 'var(--clr-text-primary)' }}>React Client</div>
+                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', background: 'var(--clr-glass)', backdropFilter: 'blur(12px)', border: '1px solid var(--clr-border)', borderRadius: 'var(--radius-md)', padding: '20px', boxShadow: 'var(--shadow-sm)', flexWrap: 'wrap', justifyContent: 'center' }}>
+                    <div style={{ padding: '9px 14px', borderRadius: '10px', fontFamily: '"JetBrains Mono", monospace', fontSize: '11px', background: 'rgba(167,199,231,0.15)', border: '1px solid var(--clr-border)', color: 'var(--clr-text-primary)' }}>React Client</div>
                     <span style={{ color: 'var(--clr-text-muted)' }}>→</span>
                     <div style={{ padding: '9px 14px', borderRadius: '10px', fontFamily: '"JetBrains Mono", monospace', fontSize: '12px', background: 'rgba(127,179,213,0.15)', border: '1px solid var(--clr-border)', color: 'var(--clr-text-primary)' }}>Express API</div>
                     <span style={{ color: 'var(--clr-text-muted)' }}>→</span>
@@ -98,7 +98,7 @@ const Projects = () => {
 };
 
 const ProjectCard = ({ delay, tag, title, desc, bullets, tech }) => (
-  <article className="project-card reveal-up glass-card" style={{ '--delay': delay, display: 'flex', flexDirection: 'column', gap: '16px', padding: '32px' }}>
+  <article className="project-card reveal-up glass-card" style={{ '--delay': delay, display: 'flex', flexDirection: 'column', gap: '16px', padding: 'max(20px, 4vw)' }}>
     <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
       <span style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: '11px', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--clr-accent-dark)', background: 'rgba(127,179,213,0.12)', border: '1px solid rgba(127,179,213,0.22)', borderRadius: '100px', padding: '3px 10px', truncate: 'none', WebkitLineClamp: 1, overflow: 'hidden', textOverflow: 'ellipsis' }}>{tag}</span>
     </div>

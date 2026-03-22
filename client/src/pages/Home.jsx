@@ -7,22 +7,22 @@ const Home = () => {
 
   return (
     <main>
-      <section className="hero" style={{ position: 'relative', minHeight: 'calc(100vh - var(--navbar-h))', display: 'flex', alignItems: 'center', padding: '0 40px' }}>
+      <section className="hero hero-container" style={{ position: 'relative', minHeight: 'calc(100vh - var(--navbar-h))', display: 'flex', alignItems: 'center' }}>
 
         {/* Glass orbs & Soft Center Glow */}
         <div style={{ position: 'absolute', top: '30%', left: '50%', transform: 'translate(-50%, -50%)', width: '40vw', height: '40vw', background: 'radial-gradient(circle, var(--clr-glow) 0%, transparent 60%)', filter: 'blur(80px)', opacity: 0.35, zIndex: 1, pointerEvents: 'none' }}></div>
-        <div className="glass-orb" style={{ width: '560px', height: '560px', top: '-120px', right: '-100px', animation: 'orbFloat 18s linear infinite', position: 'absolute', borderRadius: '50%', background: 'radial-gradient(circle, var(--clr-glow) 0%, transparent 70%)', filter: 'blur(1px)', pointerEvents: 'none', zIndex: 1 }}></div>
-        <div className="glass-orb" style={{ width: '400px', height: '400px', bottom: '10%', left: '-60px', animation: 'orbFloat 22s linear infinite reverse', position: 'absolute', borderRadius: '50%', background: 'radial-gradient(circle, var(--clr-glow) 0%, transparent 70%)', filter: 'blur(1px)', pointerEvents: 'none', animationDelay: '-6s', zIndex: 1 }}></div>
+        <div className="glass-orb glass-orb-1" style={{ animation: 'orbFloat 18s linear infinite', position: 'absolute', borderRadius: '50%', background: 'radial-gradient(circle, var(--clr-glow) 0%, transparent 70%)', filter: 'blur(1px)', pointerEvents: 'none', zIndex: 1 }}></div>
+        <div className="glass-orb glass-orb-2" style={{ animation: 'orbFloat 22s linear infinite reverse', position: 'absolute', borderRadius: '50%', background: 'radial-gradient(circle, var(--clr-glow) 0%, transparent 70%)', filter: 'blur(1px)', pointerEvents: 'none', animationDelay: '-6s', zIndex: 1 }}></div>
 
-        <div className="hero-content" style={{ position: 'relative', zIndex: 2, maxWidth: '820px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '28px' }}>
-          <div className="hero-badge reveal-fade" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'var(--clr-glass)', border: '1px solid var(--clr-border)', backdropFilter: 'blur(12px)', borderRadius: '100px', padding: '8px 18px', fontSize: '13px', fontWeight: 500, color: 'var(--clr-text-sec)', width: 'fit-content', boxShadow: 'var(--shadow-sm)' }}>
+        <div className="hero-content" style={{ position: 'relative', zIndex: 2, maxWidth: '820px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          <div className="hero-badge reveal-fade" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'var(--clr-glass)', border: '1px solid var(--clr-border)', backdropFilter: 'blur(12px)', borderRadius: '100px', padding: '8px 18px', fontSize: '13px', fontWeight: 500, color: 'var(--clr-text-sec)', width: 'auto', maxWidth: '100%', boxShadow: 'var(--shadow-sm)', flexWrap: 'wrap' }}>
             <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#4CAF90', boxShadow: '0 0 0 3px rgba(76,175,144,0.25)' }}></span>
             <span>Available for internships & engineering opportunities</span>
           </div>
 
-          <h1 className="hero-headline" style={{ fontFamily: '"Space Grotesk", sans-serif', fontSize: 'clamp(52px, 7vw, 96px)', lineHeight: 1.05, letterSpacing: '-0.03em', color: 'var(--clr-text-primary)', display: 'flex', flexDirection: 'column', gap: '0.05em' }}>
+          <h1 className="hero-headline" style={{ fontFamily: '"Space Grotesk", sans-serif', fontSize: 'clamp(42px, 10vw, 96px)', lineHeight: 1.05, letterSpacing: '-0.03em', color: 'var(--clr-text-primary)', display: 'flex', flexDirection: 'column', gap: '0.05em', wordWrap: 'break-word', overflowWrap: 'break-word' }}>
             <span className="reveal-fade" style={{ fontWeight: 900 }}>Engineering</span>
-            <span className="reveal-fade" style={{ color: 'transparent', WebkitTextStroke: '2px var(--clr-text-primary)', textShadow: '0 0 20px rgba(255,255,255,0.1)', fontWeight: 800, animationDelay: '0.1s', lineHeight: 1.2 }}>Real-World Systems</span>
+            <span className="reveal-fade" style={{ color: 'transparent', WebkitTextStroke: '2px var(--clr-text-primary)', textShadow: '0 0 20px rgba(255,255,255,0.1)', fontWeight: 800, animationDelay: '0.1s', lineHeight: 1.2, whiteSpace: 'normal', wordBreak: 'break-word' }}>Real-World Systems</span>
             <span className="reveal-fade" style={{ fontWeight: 800, background: 'linear-gradient(135deg, var(--clr-text-primary) 20%, var(--clr-accent) 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', animationDelay: '0.2s' }}>That Scale.</span>
           </h1>
 

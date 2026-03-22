@@ -47,7 +47,7 @@ const LetsTalk = () => {
   return (
     <main>
       <section className="section" id="contact-section" style={{ paddingTop: '80px', position: 'relative', background: 'linear-gradient(180deg, transparent 0%, rgba(127,179,213,0.08) 50%, transparent 100%)' }}>
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '64px', alignItems: 'center' }}>
+        <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))', gap: '64px', alignItems: 'center' }}>
           
           <div className="reveal-up" style={{ paddingTop: '16px' }}>
             <span className="section-tag">Let's Connect</span>

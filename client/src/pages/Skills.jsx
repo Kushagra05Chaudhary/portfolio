@@ -12,7 +12,7 @@ const Skills = () => {
             </h2>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))', gap: '48px', alignItems: 'center' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 380px), 1fr))', gap: '48px', alignItems: 'center' }}>
             <div className="reveal-fade" style={{ display: 'flex', justifyContent: 'center' }}>
               <SkillGraph />
             </div>
