@@ -19,10 +19,10 @@ class Particle {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
     const alpha = this.a * (0.8 + 0.5 * Math.sin(this.phase)); // Increased base alpha
-    const r = isDark ? 79 : 127;
-    const g = isDark ? 140 : 179;
-    const b = isDark ? 255 : 213;
-    ctx.fillStyle = `rgba(${r},${g},${b},${alpha * (isDark ? 0.9 : 1.4)})`; // Higher max opacity
+    const r = isDark ? 79 : 30;
+    const g = isDark ? 140 : 58;
+    const b = isDark ? 255 : 138;
+    ctx.fillStyle = `rgba(${r},${g},${b},${alpha * (isDark ? 0.9 : 0.8)})`; // Higher max opacity
     ctx.fill();
   }
   update() {
@@ -82,10 +82,10 @@ const ParticleCanvas = () => {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            const alpha = (1 - d / 110) * (isDark ? 0.20 : 0.45); // Increased line opacity
-            const cr = isDark ? 255 : 167;
-            const cg = isDark ? 255 : 199;
-            const cb = isDark ? 255 : 231;
+            const alpha = (1 - d / 110) * (isDark ? 0.20 : 0.35); // Adjusted for darker color
+            const cr = isDark ? 255 : 30;
+            const cg = isDark ? 255 : 58;
+            const cb = isDark ? 255 : 138;
             ctx.strokeStyle = `rgba(${cr},${cg},${cb},${alpha})`;
             ctx.lineWidth = 1.0; // Slightly thicker lines
             ctx.stroke();
