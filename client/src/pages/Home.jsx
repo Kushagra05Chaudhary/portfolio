@@ -2,7 +2,6 @@ import { useState } from 'react';
 
 import ResumeModal from '../components/ResumeModal';
 import CyberHUD from '../components/CyberHUD';
-import AdvancedProjectionHero from '../components/AdvancedProjectionHero';
 
 const Home = () => {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
@@ -66,7 +65,7 @@ const Home = () => {
           </div>
 
           <div className="hero-visual-block reveal-fade-slow" style={{ display: 'flex', justifyContent: 'center', animationDelay: '0.3s', padding: '20px 0' }}>
-            <AdvancedProjectionHero imageUrl="/profile_image.png" />
+            <CyberHUD imageUrl="/profile_image.png" />
           </div>
         </div>
       </section>

@@ -1,0 +1,496 @@
+/* AdvancedProjectionHero.css */
+
+/* Container adjusted for equilibrium */
+.ap-container {
+  position: relative;
+  width: 100%;
+  max-width: 580px; /* Increased scale */
+  aspect-ratio: 4/5;
+  margin: 0 auto;
+  transform: translateX(-4%) translateY(-5%); /* Shift towards center and up slightly */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1600px;
+  z-index: 10;
+  overflow: visible;
+  --mx: 0;
+  --my: 0;
+  --scrollY: 0;
+}
+
+/* =========================================
+   CANVAS & ATMOSPHERE
+========================================= */
+.ap-canvas-bg {
+  position: absolute;
+  inset: -60%;
+  width: 220%;
+  height: 220%;
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform;
+}
+
+.ap-light-fog {
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(circle at center, transparent 0%, rgba(10, 15, 25, 0.95) 75%);
+  filter: blur(50px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* =========================================
+   PROJECTION STAGE & REACTOR CORE
+========================================= */
+.ap-projection-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  transform-style: preserve-3d;
+}
+
+/* Reactor Core Platform */
+.ap-reactor-core {
+  position: absolute;
+  bottom: -40px;
+  width: 440px; /* Increased base width to match larger avatar */
+  height: 160px;
+  transform-style: preserve-3d;
+  z-index: 2;
+  will-change: transform;
+  transition: transform 0.1s linear; 
+}
+
+/* Reactor Base */
+.ap-core-base {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(10, 20, 40, 0.9) 0%, rgba(5, 10, 20, 0.95) 80%);
+  border: 4px solid rgba(40, 80, 160, 0.5);
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.9),
+    inset 0 0 50px rgba(0, 0, 0, 0.9);
+}
+
+/* Volumetric Turbulence inside Core (expands glow on scroll) */
+.ap-core-turbulence {
+  position: absolute;
+  inset: 15px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, rgba(80, 160, 255, 0.6), transparent 40%, rgba(80, 160, 255, 0.6) 50%, transparent 90%, rgba(80, 160, 255, 0.6));
+  filter: blur(20px);
+  mix-blend-mode: screen;
+  animation: ap-turbulence-spin 10s ease-in-out infinite alternate;
+  /* Scroll interaction: platform glow expands */
+  opacity: calc(1 + var(--scrollY) * 0.5);
+}
+
+@keyframes ap-turbulence-spin {
+  0% { transform: rotate(0deg) scale(0.9); }
+  100% { transform: rotate(180deg) scale(1.1); }
+}
+
+/* Layered Energy Waves */
+.ap-energy-waves-container {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.ap-energy-wave {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 2px solid rgba(80, 160, 255, 0.6);
+  box-shadow: 0 0 30px rgba(80, 160, 255, 0.3), inset 0 0 20px rgba(80, 160, 255, 0.2);
+  opacity: 0;
+  animation: ap-pulse-wave 5s cubic-bezier(0.1, 0.8, 0.3, 1) infinite;
+}
+
+.wave-1 { animation-delay: 0s; }
+.wave-2 { animation-delay: 1.6s; }
+.wave-3 { animation-delay: 3.2s; }
+
+@keyframes ap-pulse-wave {
+  0% { transform: translate(-50%, -50%) scale(0.3); opacity: 1; border-width: 4px; }
+  100% { transform: translate(-50%, -50%) scale(3.8); opacity: 0; border-width: 0.5px; }
+}
+
+/* Base Orbital Rings - Concentric Base */
+.ap-orbital-rings {
+  position: absolute;
+  inset: -10%;
+  transform-style: preserve-3d;
+}
+
+.ap-ring {
+  position: absolute;
+  top: 50%; left: 50%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: screen;
+}
+
+.ap-ring-inner {
+  width: 55%; height: 55%;
+  border: 4px solid rgba(80, 200, 255, 0.8);
+  box-shadow: 0 0 30px rgba(80, 160, 255, 0.6), inset 0 0 20px rgba(80, 160, 255, 0.4);
+  animation: ap-ring-pulse-inner 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+.ap-ring-middle {
+  width: 80%; height: 80%;
+  border: 2px dashed rgba(140, 200, 255, 0.5);
+  box-shadow: 0 0 15px rgba(140, 200, 255, 0.3);
+  animation: ap-ring-rotate-middle 20s linear infinite;
+}
+.ap-ring-outer {
+  width: 105%; height: 105%;
+  border: 1px dotted rgba(220, 150, 80, 0.4);
+  filter: blur(1px);
+  animation: ap-ring-float-outer 8s ease-in-out infinite alternate;
+}
+
+@keyframes ap-ring-pulse-inner {
+  0% { transform: translate(-50%, -50%) scale(0.95); opacity: 0.8; }
+  50% { transform: translate(-50%, -50%) scale(1.02); opacity: 1; box-shadow: 0 0 40px rgba(80, 160, 255, 0.9); }
+  100% { transform: translate(-50%, -50%) scale(0.95); opacity: 0.8; }
+}
+@keyframes ap-ring-rotate-middle {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+@keyframes ap-ring-float-outer {
+  0% { transform: translate(-50%, -50%) scale(0.98); opacity: 0.5; }
+  100% { transform: translate(-50%, -50%) scale(1.05); opacity: 0.8; border-color: rgba(220, 150, 80, 0.7); }
+}
+
+/* Magnetic Particle Streams */
+.ap-magnetic-streams {
+  position: absolute;
+  inset: -20%;
+  border-radius: 50%;
+  animation: ap-stream-orbit 10s linear infinite;
+  pointer-events: none;
+}
+
+.ap-stream {
+  position: absolute;
+  width: 50px;
+  height: 8px;
+  border-radius: 50%;
+  filter: blur(4px);
+}
+
+.ap-stream-left {
+  top: 50%; left: 0; transform: translate(-50%, -50%);
+  background: linear-gradient(90deg, transparent, rgba(140, 200, 255, 0.8), transparent);
+}
+.ap-stream-right {
+  top: 50%; right: 0; transform: translate(50%, -50%);
+  background: linear-gradient(90deg, transparent, rgba(220, 150, 80, 0.8), transparent);
+}
+
+@keyframes ap-stream-orbit {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* =========================================
+   VERTICAL ENERGY BEAM
+========================================= */
+.ap-vertical-beam {
+  position: absolute;
+  bottom: 10px;
+  width: 320px; /* Wider beam for soft scatter */
+  height: 95%;
+  z-index: 1;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+}
+
+/* Base beam connecting platform and avatar */
+.ap-beam-core {
+  position: absolute;
+  bottom: 0;
+  width: 50%;
+  height: 100%;
+  /* Soft fading gradient to top, avoiding sharp rectangular glow */
+  background: radial-gradient(ellipse at bottom, rgba(80, 160, 255, 0.4) 0%, rgba(140, 200, 255, 0.1) 40%, transparent 80%);
+  filter: blur(25px);
+  mix-blend-mode: screen;
+  animation: ap-beam-shift-core 4s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
+}
+
+/* Atmospheric scattering */
+.ap-beam-scatter {
+  position: absolute;
+  bottom: 0;
+  width: 90%;
+  height: 100%;
+  background: radial-gradient(ellipse at bottom, rgba(220, 150, 80, 0.15) 0%, rgba(80, 160, 255, 0.03) 60%, transparent 100%);
+  filter: blur(40px);
+  animation: ap-beam-shift-scatter 6s ease-in-out infinite alternate-reverse;
+}
+
+/* Internal energy turbulence */
+.ap-beam-turbulence {
+  position: absolute;
+  bottom: 0;
+  width: 65%;
+  height: 80%;
+  background: conic-gradient(from 0deg at 50% 100%, transparent 35%, rgba(140, 200, 255, 0.15) 50%, transparent 65%);
+  filter: blur(15px);
+  animation: ap-beam-turb 8s linear infinite;
+  mask-image: linear-gradient(to top, black 0%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to top, black 0%, transparent 100%);
+}
+
+@keyframes ap-beam-shift-core {
+  0% { transform: scaleX(0.95); opacity: 0.7; }
+  100% { transform: scaleX(1.1); opacity: 1; }
+}
+@keyframes ap-beam-shift-scatter {
+  0% { transform: scaleX(0.9); opacity: 0.6; }
+  100% { transform: scaleX(1.1); opacity: 1; }
+}
+@keyframes ap-beam-turb {
+  0% { transform: scaleX(0.8) skewX(-5deg); opacity: 0.5; }
+  50% { transform: scaleX(1.1) skewX(5deg); opacity: 0.9; }
+  100% { transform: scaleX(0.8) skewX(-5deg); opacity: 0.5; }
+}
+
+/* =========================================
+   AVATAR CONTAINER
+========================================= */
+.ap-avatar-container {
+  position: absolute;
+  bottom: 110px; /* Raised vertically */
+  width: 360px; /* Scaled up safely */
+  height: 520px;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  will-change: transform;
+  transition: transform 0.1s linear;
+  pointer-events: none; 
+}
+
+.ap-avatar-shadow {
+  position: absolute;
+  bottom: -45px;
+  width: 150px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.85);
+  border-radius: 50%;
+  filter: blur(12px);
+  transform: rotateX(75deg);
+  animation: ap-shadow-grow 8s ease-in-out infinite alternate;
+}
+
+@keyframes ap-shadow-grow {
+  0% { transform: rotateX(75deg) scale(0.9); }
+  100% { transform: rotateX(75deg) scale(1.1); }
+}
+
+/* Avatar Float Motion - Magnetic suspension rather than simple float */
+.ap-avatar-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  /* Complex easing curve for magnetic suspension stability */
+  animation: ap-avatar-magnetic-float 8s cubic-bezier(0.4, 0.0, 0.2, 1) infinite alternate;
+  transform-style: preserve-3d;
+}
+
+@keyframes ap-avatar-magnetic-float {
+  0% { transform: translateY(0px) rotateY(-0.5deg) translateZ(0); }
+  30% { transform: translateY(-3px) rotateY(0deg) translateZ(0); } /* Micro stabilization */
+  70% { transform: translateY(-12px) rotateY(0.5deg) translateZ(0); } /* Gentle peak */
+  100% { transform: translateY(-15px) rotateY(1deg) translateZ(0); } 
+}
+
+.ap-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom center;
+  /* Holographic dissolve mask at the torso / bottom */
+  mask-image: linear-gradient(to bottom, black 65%, rgba(0,0,0,0.5) 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 65%, rgba(0,0,0,0.5) 85%, transparent 100%);
+  
+  filter: drop-shadow(0 20px 40px rgba(80, 160, 255, 0.25)) 
+          drop-shadow(0 -5px 15px rgba(0,0,0,0.4)) 
+          brightness(1.08) contrast(1.1) saturate(1.1) hue-rotate(-2deg);
+  z-index: 5;
+}
+
+/* Materialization FX Overlay */
+.ap-materialize-effect {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  border-radius: 20px;
+  overflow: hidden;
+  mask-image: radial-gradient(ellipse at bottom, black 20%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at bottom, black 20%, transparent 80%);
+}
+
+.ap-hologram-scanline {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 6px;
+  background: rgba(140, 200, 255, 0.3);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 20px rgba(100, 200, 255, 0.4);
+  animation: ap-hologram-scan 3.5s cubic-bezier(0.8, 0, 0.2, 1) infinite;
+  mix-blend-mode: overlay;
+}
+
+@keyframes ap-hologram-scan {
+  0% { transform: translateY(520px) scaleY(1); opacity: 0; }
+  10% { opacity: 1; }
+  90% { transform: translateY(-20px) scaleY(1.5); opacity: 1; }
+  100% { transform: translateY(-20px) scaleY(1.5); opacity: 0; }
+}
+
+.ap-hologram-glitch {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(rgba(255,255,255,0.02) 0px, transparent 1px, transparent 4px);
+  animation: ap-glitch 6s steps(2, end) infinite;
+  mix-blend-mode: screen;
+}
+
+@keyframes ap-glitch {
+  0% { transform: translateX(0); opacity: 0.1; }
+  10% { transform: translateX(2px); opacity: 0.2; }
+  12% { transform: translateX(-2px); opacity: 0.1; }
+  14% { transform: translateX(0); opacity: 0; }
+  100% { transform: translateX(0); opacity: 0; }
+}
+
+.ap-data-point {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(140, 200, 255, 1);
+  z-index: 7;
+  animation: ap-data-pulse 2s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
+}
+.pt-1 { bottom: 45%; left: 40%; animation-delay: 0s; }
+.pt-2 { bottom: 65%; right: 43%; animation-delay: -1s; }
+
+@keyframes ap-data-pulse {
+  0% { transform: scale(0.5); opacity: 0.2; }
+  100% { transform: scale(1.5); opacity: 0.8; }
+}
+
+/* =========================================
+   INTERACTIVE ORBITAL ENERGY FIELD
+========================================= */
+.ap-interactive-orbit {
+  position: absolute;
+  bottom: 120px; /* Positioned slightly below crossed arms for the specific image */
+  width: 440px;  /* Wider orbit to wrap cleanly */
+  height: 440px;
+  border-radius: 50%;
+  /* Magnetic energy field style, not a decorative solid ring */
+  background: radial-gradient(circle at center, transparent 63%, rgba(140, 200, 255, 0.05) 66%, rgba(80, 160, 255, 0.15) 70%, transparent 72%);
+  border: 1px solid rgba(140, 200, 255, 0.1);
+  z-index: 6;
+  pointer-events: auto;
+  cursor: crosshair;
+  will-change: transform;
+  transition: transform 0.1s linear, box-shadow 0.6s ease, border-color 0.6s ease;
+  transform-style: preserve-3d;
+}
+
+.ap-orbit-glow-ring {
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  /* Faint glowing magnetic edge */
+  background: radial-gradient(circle at center, transparent 66%, rgba(220, 150, 80, 0.08) 69%, transparent 72%);
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.ap-orbit-tracer {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid transparent;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+/* Base state (not hovered) - calm, intelligent pulse */
+.ap-interactive-orbit:not(.orbit-active) .ap-orbit-glow-ring {
+  animation: ap-calm-breathe 6s ease-in-out infinite alternate;
+}
+
+@keyframes ap-calm-breathe {
+  0% { transform: scale(0.98); background-image: radial-gradient(circle at center, transparent 66%, rgba(220, 150, 80, 0.05) 69%, transparent 72%); }
+  100% { transform: scale(1.02); background-image: radial-gradient(circle at center, transparent 66%, rgba(220, 150, 80, 0.15) 69%, transparent 72%); }
+}
+
+/* HOVER / ACTIVE STATE */
+.orbit-active {
+  box-shadow: 
+    inset 0 0 30px rgba(80, 160, 255, 0.15),
+    0 0 40px rgba(80, 160, 255, 0.15);
+  border-color: rgba(140, 200, 255, 0.4);
+}
+
+.orbit-active .ap-orbit-glow-ring {
+  background: radial-gradient(circle at center, transparent 64%, rgba(220, 150, 80, 0.25) 69%, transparent 75%);
+  transform: scale(1.02);
+}
+
+.orbit-active .ap-orbit-tracer {
+  opacity: 1;
+  border-top-color: rgba(140, 200, 255, 0.8);
+  filter: drop-shadow(0 0 10px rgba(140, 200, 255, 0.8));
+}
+
+.orbit-active .t-1 {
+  animation: ap-ripple-wave 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+.orbit-active .t-2 {
+  border-bottom-color: rgba(220, 150, 80, 0.9);
+  animation: ap-ripple-wave 2s cubic-bezier(0.4, 0, 0.2, 1) infinite reverse;
+}
+
+@keyframes ap-ripple-wave {
+  0% { transform: translate(-50%, -50%) rotate(0deg) scale(0.98); opacity: 0; }
+  50% { transform: translate(-50%, -50%) rotate(45deg) scale(1.02); opacity: 1; }
+  100% { transform: translate(-50%, -50%) rotate(90deg) scale(0.98); opacity: 0; }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  .ap-container { max-width: 360px; transform: translateX(0) translateY(0); }
+  .ap-avatar-container { width: 280px; height: 380px; bottom: 65px; }
+  .ap-reactor-core { width: 320px; height: 110px; bottom: -20px; }
+  .ap-interactive-orbit { width: 340px; height: 340px; bottom: 85px; }
+  .ap-vertical-beam { width: 220px; }
+}
