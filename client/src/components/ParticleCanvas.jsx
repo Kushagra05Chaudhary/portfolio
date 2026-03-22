@@ -1,3 +1,4 @@
+
 import { useEffect, useRef } from 'react';
 
 class Particle {
@@ -19,13 +20,14 @@ class Particle {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
     const alpha = this.a * (0.8 + 0.5 * Math.sin(this.phase)); // Increased base alpha
-    const r = isDark ? 79 : 30;
+    const r = isDark ? 80 : 30;
     const g = isDark ? 140 : 58;
     const b = isDark ? 255 : 138;
-    ctx.fillStyle = `rgba(${r},${g},${b},${alpha * (isDark ? 0.9 : 0.8)})`; // Higher max opacity
+    ctx.fillStyle = `rgba(${r},${g},${b},${alpha * (isDark ? 1 : 1)})`; // Higher max opacity
     ctx.fill();
   }
   update() {
+
     this.phase += 0.015;
     const { mouse, W, H } = this.state;
     // mouse repulsion
@@ -55,7 +57,7 @@ const ParticleCanvas = () => {
 
     const state = { W: 0, H: 0, mouse: { x: -999, y: -999 } };
     let particles = [];
-    const COUNT = window.innerWidth < 768 ? 35 : 70;
+    const COUNT = window.innerWidth < 768 ? 60 : 140;
 
     const resize = () => {
       state.W = canvas.width = window.innerWidth;
@@ -97,7 +99,7 @@ const ParticleCanvas = () => {
         p.update(t - lastTime);
         p.draw(ctx, isDark);
       });
-      
+
       lastTime = t;
       raf = requestAnimationFrame(animate);
     };
@@ -122,9 +124,9 @@ const ParticleCanvas = () => {
   }, []);
 
   return (
-    <canvas 
-      ref={canvasRef} 
-      aria-hidden="true" 
+    <canvas
+      ref={canvasRef}
+      aria-hidden="true"
       style={{ position: 'fixed', inset: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: -1 }}
     />
   );

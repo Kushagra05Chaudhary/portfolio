@@ -4,14 +4,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap');
 
 :root {
-  /* LIGHT MODE (Primary BG: #F5F7FB, Secondary BG: #E9EEF6) */
+  /* LIGHT MODE (Primary BG: #EEF2F6, Secondary BG: #E2E8F0) */
   --clr-primary: #0F172A;
   --clr-accent: #4F8CFF;
   --clr-accent-dark: #3b74db;
-  --clr-bg-start: #F5F7FB;
-  --clr-bg-end: #E9EEF6;
-  --clr-glass: rgba(255, 255, 255, 0.7);
-  --clr-glass-hover: rgba(255, 255, 255, 0.9);
+  --clr-bg-start: #EEF2F6;
+  --clr-bg-end: #E2E8F0;
+  --clr-glass: rgba(255, 255, 255, 0.55);
+  --clr-glass-hover: rgba(255, 255, 255, 0.8);
   --clr-border: rgba(255, 255, 255, 1);
   --clr-border-hover: rgba(79, 140, 255, 0.3);
   --clr-text-primary: #0F172A;
