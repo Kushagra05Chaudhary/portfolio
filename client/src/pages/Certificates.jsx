@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import ResumeModal from '../components/ResumeModal';
+import { useScrollReveal } from '../hooks/useScrollReveal';
+import { useMouseGlow } from '../hooks/useMouseGlow';
+import '../styles/About.css';
 
 const Certificates = () => {
   const [selectedCert, setSelectedCert] = useState(null);
