@@ -130,7 +130,18 @@ const LetsTalk = () => {
               {!status || status !== 'submitting' && <Send size={16} />}
             </button>
             <style>{`
-              .form-input:focus { border-color: var(--clr-accent) !important; box-shadow: 0 0 0 3px rgba(167,199,231,0.25) !important; background: rgba(255,255,255,0.70) !important; outline: none; }
+              .form-input:focus { border-color: var(--clr-accent) !important; box-shadow: 0 0 0 3px rgba(167,199,231,0.25) !important; background: rgba(255,255,255,0.05) !important; outline: none; }
+              /* Fix browser autofill background styles */
+              input:-webkit-autofill,
+              input:-webkit-autofill:hover, 
+              input:-webkit-autofill:focus, 
+              textarea:-webkit-autofill,
+              textarea:-webkit-autofill:hover,
+              textarea:-webkit-autofill:focus {
+                -webkit-text-fill-color: var(--clr-text-primary);
+                -webkit-box-shadow: 0 0 0px 1000px rgba(255,255,255,0.05) inset;
+                transition: background-color 5000s ease-in-out 0s;
+              }
             `}</style>
           </form>
 
