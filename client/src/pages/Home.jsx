@@ -62,11 +62,12 @@ const Home = () => {
                 </div>
               </div>
             </div>
-
-            <div className="hero-visual-block reveal-fade-slow" style={{ display: 'flex', justifyContent: 'center', animationDelay: '0.3s', padding: '20px 0' }}>
-              <CyberHUD imageUrl="/profile_image.png" />
-            </div>
           </div>
+
+          <div className="hero-visual-block reveal-fade-slow" style={{ display: 'flex', justifyContent: 'center', animationDelay: '0.3s', padding: '20px 0' }}>
+            <CyberHUD imageUrl="/profile_image.png" />
+          </div>
+        </div>
       </section>
 
       <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
