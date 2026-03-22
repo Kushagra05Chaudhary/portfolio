@@ -28,7 +28,7 @@ const Certificates = () => {
       institution: 'IBM (Coursera)',
       focus: 'OS structures and system resource management.',
       year: '2023',
-      file: 'Introduction_to_Hardware_&_Operating_Systems'
+      file: 'Introduction_to_Hardware_and_Operating_Systems'
     },
     { 
       icon: '🧮', 
@@ -36,7 +36,7 @@ const Certificates = () => {
       institution: 'Infosys Springboard',
       focus: 'Formal logic and theoretical foundations of computation.',
       year: '2024',
-      file: 'Computational_Theory_&_Finite_Automata'
+      file: 'Computational_Theory_and_Finite_Automata'
     },
     { 
       icon: '📡', 
