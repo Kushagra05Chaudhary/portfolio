@@ -33,18 +33,19 @@ const ResumeModal = ({ isOpen, onClose, pdfUrl, title }) => {
         boxShadow: 'var(--shadow-xl)'
       }}>
         
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <h3 style={{ fontFamily: '"Space Grotesk", sans-serif', fontSize: '20px', fontWeight: 600 }}>{actualTitle}</h3>
-          <div style={{ display: 'flex', gap: '12px' }}>
-            <a href={actualUrl} target="_blank" rel="noopener noreferrer" className="btn-ghost" style={{ padding: '8px 16px', borderRadius: '8px', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-               <ExternalLink size={16} /> Open
+        <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
+          <h3 style={{ fontFamily: '"Space Grotesk", sans-serif', fontSize: 'clamp(16px, 4vw, 20px)', fontWeight: 600, wordBreak: 'break-word', flex: '1 1 200px' }}>{actualTitle}</h3>
+          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+            <a href={actualUrl} target="_blank" rel="noopener noreferrer" className="btn-ghost" style={{ padding: '8px 12px', borderRadius: '8px', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+               <ExternalLink size={16} /> <span className="hide-mobile">Open</span>
             </a>
-            <a href={actualUrl} download className="btn-primary" style={{ padding: '8px 16px', borderRadius: '8px', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-               <Download size={16} /> Download
+            <a href={actualUrl} download className="btn-primary" style={{ padding: '8px 12px', borderRadius: '8px', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+               <Download size={16} /> <span className="hide-mobile">Download</span>
             </a>
-            <button onClick={onClose} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--clr-text-sec)', padding: '4px' }}>
+            <button onClick={onClose} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--clr-text-sec)', padding: '4px', marginLeft: 'auto' }}>
               <X size={24} />
             </button>
+            <style>{`@media(max-width: 480px){.hide-mobile{display:none;}}`}</style>
           </div>
         </div>
 
