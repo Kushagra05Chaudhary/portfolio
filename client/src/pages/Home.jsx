@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import ResumeModal from '../components/ResumeModal';
+import CyberHUD from '../components/CyberHUD';
 
 const Home = () => {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
@@ -14,8 +15,9 @@ const Home = () => {
         <div className="glass-orb glass-orb-1" style={{ animation: 'orbFloat 18s linear infinite', position: 'absolute', borderRadius: '50%', background: 'radial-gradient(circle, var(--clr-glow) 0%, transparent 70%)', filter: 'blur(1px)', pointerEvents: 'none', zIndex: 1 }}></div>
         <div className="glass-orb glass-orb-2" style={{ animation: 'orbFloat 22s linear infinite reverse', position: 'absolute', borderRadius: '50%', background: 'radial-gradient(circle, var(--clr-glow) 0%, transparent 70%)', filter: 'blur(1px)', pointerEvents: 'none', animationDelay: '-6s', zIndex: 1 }}></div>
 
-        <div className="hero-content" style={{ position: 'relative', zIndex: 2, maxWidth: '820px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '24px' }}>
-          <div className="hero-badge reveal-fade" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'var(--clr-glass)', border: '1px solid var(--clr-border)', backdropFilter: 'blur(12px)', borderRadius: '100px', padding: '8px 18px', fontSize: '13px', fontWeight: 500, color: 'var(--clr-text-sec)', width: 'auto', maxWidth: '100%', boxShadow: 'var(--shadow-sm)', flexWrap: 'wrap' }}>
+        <div className="hero-content" style={{ position: 'relative', zIndex: 2, width: '100%', maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))', gap: '40px', alignItems: 'center' }}>
+          <div className="hero-text-block" style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+            <div className="hero-badge reveal-fade" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'var(--clr-glass)', border: '1px solid var(--clr-border)', backdropFilter: 'blur(12px)', borderRadius: '100px', padding: '8px 18px', fontSize: '13px', fontWeight: 500, color: 'var(--clr-text-sec)', width: 'auto', maxWidth: '100%', boxShadow: 'var(--shadow-sm)', flexWrap: 'wrap' }}>
             <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#4CAF90', boxShadow: '0 0 0 3px rgba(76,175,144,0.25)' }}></span>
             <span>Available for internships & engineering opportunities</span>
           </div>
@@ -59,6 +61,10 @@ const Home = () => {
                 ))}
               </div>
             </div>
+          </div>
+          
+          <div className="hero-visual-block reveal-fade-slow" style={{ display: 'flex', justifyContent: 'center', animationDelay: '0.3s', padding: '20px 0' }}>
+            <CyberHUD imageUrl="/profile_image.png" />
           </div>
         </div>
       </section>
