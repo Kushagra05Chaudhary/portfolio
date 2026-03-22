@@ -18,7 +18,8 @@ const ResumeModal = ({ isOpen, onClose, pdfUrl, title }) => {
 
   if (!isOpen) return null;
 
-  const actualUrl = pdfUrl || 'http://localhost:5000/api/resume';
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+  const actualUrl = pdfUrl || `${API_URL}/api/resume`;
   const actualTitle = title || 'Kush_Chaudhary_Resume.pdf';
 
   return (
