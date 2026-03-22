@@ -84,10 +84,10 @@ const ParticleCanvas = () => {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            const alpha = (1 - d / 110) * (isDark ? 0.20 : 0.35); // Adjusted for darker color
-            const cr = isDark ? 255 : 30;
-            const cg = isDark ? 255 : 58;
-            const cb = isDark ? 255 : 138;
+            const alpha = (1 - d / 110) * (isDark ? 0.20 : 0.4); // Icy blue lines
+            const cr = isDark ? 255 : 170;
+            const cg = isDark ? 255 : 205;
+            const cb = isDark ? 255 : 250;
             ctx.strokeStyle = `rgba(${cr},${cg},${cb},${alpha})`;
             ctx.lineWidth = 1.0; // Slightly thicker lines
             ctx.stroke();

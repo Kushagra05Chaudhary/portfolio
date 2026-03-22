@@ -4,21 +4,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap');
 
 :root {
-  /* LIGHT MODE (Primary BG: #EEF2F6, Secondary BG: #E2E8F0) */
-  --clr-primary: #0F172A;
+  /* LIGHT MODE (Primary BG: #F4F9FF, Secondary BG: #D6E8F9) matching hero_bg.png */
+  --clr-primary: #1A2F4C;
   --clr-accent: #4F8CFF;
   --clr-accent-dark: #3b74db;
-  --clr-bg-start: #EEF2F6;
-  --clr-bg-end: #E2E8F0;
-  --clr-glass: rgba(255, 255, 255, 0.55);
+  --clr-bg-start: #F4F9FF;
+  --clr-bg-end: #D6E8F9;
+  --clr-glass: rgba(255, 255, 255, 0.45);
   --clr-glass-hover: rgba(255, 255, 255, 0.8);
-  --clr-border: rgba(255, 255, 255, 1);
-  --clr-border-hover: rgba(79, 140, 255, 0.3);
-  --clr-text-primary: #0F172A;
-  --clr-text-sec: #5B6B8C;
-  --clr-text-muted: #8294B0;
-  --clr-shadow: rgba(0, 0, 0, 0.08);
-  --clr-glow: rgba(79, 140, 255, 0.15);
+  --clr-border: rgba(255, 255, 255, 0.8);
+  --clr-border-hover: rgba(79, 140, 255, 0.4);
+  --clr-text-primary: #1A2F4C;
+  --clr-text-sec: #4A658A;
+  --clr-text-muted: #7A96BB;
+  --clr-shadow: rgba(0, 0, 0, 0.05);
+  --clr-glow: rgba(130, 185, 250, 0.4);
 
   --radius-sm: 8px;
   --radius-md: 16px;
