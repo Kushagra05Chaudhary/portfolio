@@ -1,4 +1,88 @@
+import { useEffect, useRef, useState } from 'react';
+import { BrainCircuit, Rocket } from 'lucide-react';
+import '../styles/About.css';
+
 const About = () => {
+  const achievementsRef = useRef(null);
+  const cardRefs = useRef([]);
+  const [isAchievementsVisible, setIsAchievementsVisible] = useState(false);
+  const [leetCount, setLeetCount] = useState(0);
+
+  useEffect(() => {
+    if (!achievementsRef.current) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsAchievementsVisible(true);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(achievementsRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isAchievementsVisible) return;
+
+    const target = 200;
+    const duration = 1400;
+    const start = performance.now();
+    let rafId;
+
+    const tick = (t) => {
+      const progress = Math.min((t - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setLeetCount(Math.floor(target * eased));
+      if (progress < 1) rafId = requestAnimationFrame(tick);
+    };
+
+    rafId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafId);
+  }, [isAchievementsVisible]);
+
+  useEffect(() => {
+    const listeners = [];
+
+    cardRefs.current.forEach((card) => {
+      if (!card) return;
+
+      const onMouseMove = (event) => {
+        const rect = card.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+        const px = x / rect.width - 0.5;
+        const py = y / rect.height - 0.5;
+
+        card.style.setProperty('--ach-rx', `${(-py * 7).toFixed(2)}deg`);
+        card.style.setProperty('--ach-ry', `${(px * 9).toFixed(2)}deg`);
+        card.style.setProperty('--ach-mx', `${x}px`);
+        card.style.setProperty('--ach-my', `${y}px`);
+      };
+
+      const onMouseLeave = () => {
+        card.style.setProperty('--ach-rx', '0deg');
+        card.style.setProperty('--ach-ry', '0deg');
+        card.style.setProperty('--ach-mx', '50%');
+        card.style.setProperty('--ach-my', '50%');
+      };
+
+      card.addEventListener('mousemove', onMouseMove);
+      card.addEventListener('mouseleave', onMouseLeave);
+      listeners.push(() => {
+        card.removeEventListener('mousemove', onMouseMove);
+        card.removeEventListener('mouseleave', onMouseLeave);
+      });
+    });
+
+    return () => listeners.forEach((cleanup) => cleanup());
+  }, [isAchievementsVisible]);
+
   return (
     <main>
       <section className="section" style={{ paddingTop: '80px' }}>
@@ -131,6 +215,77 @@ const About = () => {
             </div>
 
           </div>
+
+          <section ref={achievementsRef} className={`achievements-section ${isAchievementsVisible ? 'is-visible' : ''}`}>
+            <div className="achievements-bg-grid" aria-hidden="true"></div>
+            <div className="achievements-particles" aria-hidden="true">
+              {Array.from({ length: 20 }).map((_, i) => (
+                <span
+                  key={i}
+                  style={{
+                    left: `${(i * 17) % 100}%`,
+                    top: `${(i * 29) % 100}%`,
+                    animationDuration: `${10 + i * 0.35}s`,
+                    animationDelay: `${i * -0.4}s`
+                  }}
+                ></span>
+              ))}
+            </div>
+
+            <div className="section-header reveal-up" style={{ marginBottom: '36px' }}>
+              <span className="section-tag">Achievements</span>
+              <h2 className="section-title">
+                Floating Milestones <br /><em>In My Orbit</em>
+              </h2>
+            </div>
+
+            <div className="achievements-timeline">
+              <div className="achievements-rail" aria-hidden="true"></div>
+
+              <article className="ach-row" style={{ '--delay': '0s' }}>
+                <div className="ach-node ach-node-blue">
+                  <BrainCircuit size={18} />
+                </div>
+                <div ref={(el) => { cardRefs.current[0] = el; }} className="ach-card achieve-card">
+                  <div className="ach-shimmer" aria-hidden="true"></div>
+                  <div className="ach-ripple" aria-hidden="true"></div>
+                  <div className="ach-trail" aria-hidden="true"></div>
+
+                  <div className="ach-meta">
+                    <span className="ach-subtitle">LeetCode Practice</span>
+                    <span className="ach-badge">Consistency • Problem Solving</span>
+                  </div>
+
+                  <h3 className="ach-title">Solved 200+ DSA Problems</h3>
+                  <p className="ach-desc">Built strong problem-solving rhythm through consistent algorithm practice and pattern-based revision.</p>
+
+                  <div className="ach-counter" aria-label="LeetCode solved problems">
+                    <span>{leetCount}</span>
+                    <span className="ach-counter-plus">+</span>
+                  </div>
+                </div>
+              </article>
+
+              <article className="ach-row" style={{ '--delay': '0.14s' }}>
+                <div className="ach-node ach-node-orange">
+                  <Rocket size={18} />
+                </div>
+                <div ref={(el) => { cardRefs.current[1] = el; }} className="ach-card ach-pulse-border achieve-card">
+                  <div className="ach-shimmer" aria-hidden="true"></div>
+                  <div className="ach-ripple" aria-hidden="true"></div>
+                  <div className="ach-trail" aria-hidden="true"></div>
+
+                  <div className="ach-meta">
+                    <span className="ach-subtitle">Real-world innovation challenge</span>
+                    <span className="ach-badge ach-badge-violet">Hardware + IoT Thinking</span>
+                  </div>
+
+                  <h3 className="ach-title">Participated in IoT Hackathon</h3>
+                  <p className="ach-desc">Collaborated in a rapid prototyping environment to solve practical problems under strict time constraints.</p>
+                </div>
+              </article>
+            </div>
+          </section>
         </div>
 
         <style>{`

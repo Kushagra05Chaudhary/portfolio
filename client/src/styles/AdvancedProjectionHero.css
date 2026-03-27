@@ -41,6 +41,17 @@
   pointer-events: none;
 }
 
+/* In light mode, use a bright atmospheric haze instead of a dark vignette. */
+body[data-theme="light"] .ap-light-fog {
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.02) 0%,
+    rgba(244, 247, 252, 0.45) 62%,
+    rgba(226, 232, 241, 0.72) 100%
+  );
+  filter: blur(42px);
+}
+
 /* =========================================
    PROJECTION STAGE & REACTOR CORE
 ========================================= */
@@ -256,6 +267,41 @@
   animation: ap-beam-turb 8s linear infinite;
   mask-image: linear-gradient(to top, black 0%, transparent 100%);
   -webkit-mask-image: linear-gradient(to top, black 0%, transparent 100%);
+}
+
+body[data-theme="light"] .ap-vertical-beam {
+  opacity: 0.72;
+}
+
+body[data-theme="light"] .ap-beam-core {
+  background: radial-gradient(
+    ellipse at bottom,
+    rgba(122, 176, 236, 0.2) 0%,
+    rgba(172, 210, 247, 0.08) 42%,
+    transparent 82%
+  );
+  filter: blur(20px);
+  mix-blend-mode: normal;
+}
+
+body[data-theme="light"] .ap-beam-scatter {
+  background: radial-gradient(
+    ellipse at bottom,
+    rgba(214, 143, 85, 0.09) 0%,
+    rgba(122, 176, 236, 0.02) 58%,
+    transparent 100%
+  );
+  filter: blur(30px);
+}
+
+body[data-theme="light"] .ap-beam-turbulence {
+  background: conic-gradient(
+    from 0deg at 50% 100%,
+    transparent 36%,
+    rgba(122, 176, 236, 0.08) 50%,
+    transparent 64%
+  );
+  filter: blur(12px);
 }
 
 @keyframes ap-beam-shift-core {

@@ -39,7 +39,7 @@ const Projects = () => {
 
                 <div style={{ display: 'flex', gap: '12px', marginTop: 'auto', paddingTop: '16px' }}>
                   <a href="#" className="proj-link btn-ghost" style={{ padding: '8px 16px', borderRadius: '100px', fontSize: '13px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '6px' }}><ExternalLink size={16} /> Live Demo</a>
-                  <a href="#" className="proj-link btn-ghost" style={{ padding: '8px 16px', borderRadius: '100px', fontSize: '13px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '6px' }}><Github size={16} /> GitHub</a>
+                  <a href="https://github.com/Kushagra05Chaudhary/Car_rental" target="_blank" rel="noreferrer" className="proj-link btn-ghost" style={{ padding: '8px 16px', borderRadius: '100px', fontSize: '13px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '6px' }}><Github size={16} /> GitHub</a>
                 </div>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 'max(20px, 4vw)', background: 'linear-gradient(135deg, var(--clr-glass) 0%, transparent 60%)', flexWrap: 'wrap' }}>
@@ -67,6 +67,7 @@ const Projects = () => {
                 "Explored networking fundamentals through practical implementation"
               ]}
               tech={['WebRTC', 'Node.js', 'Socket.io']}
+              githubUrl="https://github.com/Kushagra05Chaudhary/Encrypted-Secret-VOIP"
             />
 
             {/* Standard Project 3 (AI Plant Chatbot) */}
@@ -97,7 +98,7 @@ const Projects = () => {
   );
 };
 
-const ProjectCard = ({ delay, tag, title, desc, bullets, tech }) => (
+const ProjectCard = ({ delay, tag, title, desc, bullets, tech, githubUrl = '#' }) => (
   <article className="project-card reveal-up glass-card" style={{ '--delay': delay, display: 'flex', flexDirection: 'column', gap: '16px', padding: 'max(20px, 4vw)' }}>
     <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
       <span style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: '11px', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--clr-accent-dark)', background: 'rgba(127,179,213,0.12)', border: '1px solid rgba(127,179,213,0.22)', borderRadius: '100px', padding: '3px 10px', truncate: 'none', WebkitLineClamp: 1, overflow: 'hidden', textOverflow: 'ellipsis' }}>{tag}</span>
@@ -115,7 +116,7 @@ const ProjectCard = ({ delay, tag, title, desc, bullets, tech }) => (
     </div>
     <div style={{ display: 'flex', gap: '12px', marginTop: '12px' }}>
       <a href="#" className="proj-link btn-ghost" style={{ padding: '8px 16px', borderRadius: '100px', fontSize: '13px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '6px' }}><ExternalLink size={16} /> Live Demo</a>
-      <a href="#" className="proj-link btn-ghost" style={{ padding: '8px 16px', borderRadius: '100px', fontSize: '13px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '6px' }}><Github size={16} /> GitHub</a>
+      <a href={githubUrl} target="_blank" rel="noreferrer" className="proj-link btn-ghost" style={{ padding: '8px 16px', borderRadius: '100px', fontSize: '13px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '6px' }}><Github size={16} /> GitHub</a>
     </div>
   </article>
 );
