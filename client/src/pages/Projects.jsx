@@ -4,39 +4,94 @@ import { ChevronLeft, ChevronRight, Eye, Github, X } from 'lucide-react';
 const Projects = () => {
   const [gallery, setGallery] = useState(null);
 
-  const askRenImages = [
-    '/projects/askren/user/Screenshot 2026-02-21 130407.png',
-    '/projects/askren/user/Screenshot (100).png',
-    '/projects/askren/user/Screenshot (127).png',
-    '/projects/askren/owner/Screenshot (107).png',
-    '/projects/askren/owner/Screenshot (112).png',
-    '/projects/askren/admin/Screenshot (116).png',
-    '/projects/askren/admin/Screenshot (120).png'
+  const askRenGroups = [
+    {
+      key: 'user',
+      label: 'User',
+      images: [
+        '/projects/askren/user/Screenshot 2026-02-21 130407.png',
+        '/projects/askren/user/Screenshot (100).png',
+        '/projects/askren/user/Screenshot (102).png',
+        '/projects/askren/user/Screenshot (127).png',
+        '/projects/askren/user/Screenshot (151).png'
+      ]
+    },
+    {
+      key: 'owner',
+      label: 'Owner',
+      images: [
+        '/projects/askren/owner/Screenshot (107).png',
+        '/projects/askren/owner/Screenshot (109).png',
+        '/projects/askren/owner/Screenshot (112).png'
+      ]
+    },
+    {
+      key: 'admin',
+      label: 'Admin',
+      images: [
+        '/projects/askren/admin/Screenshot (116).png',
+        '/projects/askren/admin/Screenshot (118).png',
+        '/projects/askren/admin/Screenshot (120).png',
+        '/projects/askren/admin/Screenshot (123).png'
+      ]
+    }
   ];
-  const voipImages = ['/projects/voip/voip-1.svg', '/projects/voip/voip-2.svg'];
+
+  const askRenImages = askRenGroups.flatMap((group) => group.images);
+
+  const voipImages = [
+    '/projects/voip/Screenshot 2025-12-24 020545.png',
+    '/projects/voip/Screenshot 2025-12-24 020557.png',
+    '/projects/voip/Screenshot 2025-12-24 022624.png',
+    '/projects/voip/Screenshot 2025-12-24 022639.png',
+    '/projects/voip/Screenshot 2025-12-24 022648.png',
+    '/projects/voip/Screenshot 2025-12-24 025326.png',
+    '/projects/voip/Screenshot 2025-12-24 025353.png',
+    '/projects/voip/Screenshot 2025-12-24 025446.png'
+  ];
+
   const plantImages = ['/projects/ai-plant/ai-plant-1.svg', '/projects/ai-plant/ai-plant-2.svg'];
 
-  const openGallery = (title, images) => {
-    setGallery({ title, images, index: 0 });
+  const getActiveImages = (currentGallery) => {
+    if (!currentGallery) return [];
+    if (!currentGallery.groups) return currentGallery.images;
+    const activeGroup = currentGallery.groups.find((group) => group.key === currentGallery.activeGroup);
+    return activeGroup ? activeGroup.images : currentGallery.images;
+  };
+
+  const openGallery = (title, images, groups = null) => {
+    setGallery({
+      title,
+      images,
+      groups,
+      activeGroup: groups?.[0]?.key ?? null,
+      index: 0
+    });
   };
 
   const closeGallery = () => setGallery(null);
 
   const showNextImage = () => {
-    if (!gallery || gallery.images.length < 2) return;
+    if (!gallery) return;
+    const activeImages = getActiveImages(gallery);
+    if (activeImages.length < 2) return;
     setGallery((prev) => ({
       ...prev,
-      index: (prev.index + 1) % prev.images.length
+      index: (prev.index + 1) % activeImages.length
     }));
   };
 
   const showPreviousImage = () => {
-    if (!gallery || gallery.images.length < 2) return;
+    if (!gallery) return;
+    const activeImages = getActiveImages(gallery);
+    if (activeImages.length < 2) return;
     setGallery((prev) => ({
       ...prev,
-      index: (prev.index - 1 + prev.images.length) % prev.images.length
+      index: (prev.index - 1 + activeImages.length) % activeImages.length
     }));
   };
+
+  const activeImages = getActiveImages(gallery);
 
   return (
     <main>
@@ -75,7 +130,7 @@ const Projects = () => {
                 </div>
 
                 <div style={{ display: 'flex', gap: '12px', marginTop: 'auto', paddingTop: '16px' }}>
-                  <button type="button" onClick={() => openGallery('AskRen — Car Rental Platform', askRenImages)} className="proj-link btn-ghost" style={{ padding: '8px 16px', borderRadius: '100px', fontSize: '13px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '6px' }}><Eye size={16} /> View</button>
+                  <button type="button" onClick={() => openGallery('AskRen — Car Rental Platform', askRenImages, askRenGroups)} className="proj-link btn-ghost" style={{ padding: '8px 16px', borderRadius: '100px', fontSize: '13px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '6px' }}><Eye size={16} /> View</button>
                   <a href="https://github.com/Kushagra05Chaudhary/Car_rental" target="_blank" rel="noreferrer" className="proj-link btn-ghost" style={{ padding: '8px 16px', borderRadius: '100px', fontSize: '13px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '6px' }}><Github size={16} /> GitHub</a>
                 </div>
               </div>
@@ -139,25 +194,40 @@ const Projects = () => {
               </button>
             </div>
 
+            {gallery.groups && (
+              <div className="proj-gallery-groups">
+                {gallery.groups.map((group) => (
+                  <button
+                    key={group.key}
+                    type="button"
+                    className={`proj-group-btn btn-ghost ${group.key === gallery.activeGroup ? 'active' : ''}`}
+                    onClick={() => setGallery((prev) => ({ ...prev, activeGroup: group.key, index: 0 }))}
+                  >
+                    {group.label} Page
+                  </button>
+                ))}
+              </div>
+            )}
+
             <div className="proj-gallery-stage">
-              {gallery.images.length > 1 && (
+              {activeImages.length > 1 && (
                 <button type="button" className="proj-nav-btn btn-ghost" onClick={showPreviousImage} aria-label="Previous image">
                   <ChevronLeft size={18} />
                 </button>
               )}
 
-              <img src={gallery.images[gallery.index]} alt={`${gallery.title} screenshot ${gallery.index + 1}`} className="proj-gallery-image" />
+              <img src={activeImages[gallery.index]} alt={`${gallery.title} screenshot ${gallery.index + 1}`} className="proj-gallery-image" />
 
-              {gallery.images.length > 1 && (
+              {activeImages.length > 1 && (
                 <button type="button" className="proj-nav-btn btn-ghost" onClick={showNextImage} aria-label="Next image">
                   <ChevronRight size={18} />
                 </button>
               )}
             </div>
 
-            {gallery.images.length > 1 && (
+            {activeImages.length > 1 && (
               <div className="proj-gallery-thumbs">
-                {gallery.images.map((img, idx) => (
+                {activeImages.map((img, idx) => (
                   <button
                     key={img}
                     type="button"
@@ -184,6 +254,9 @@ const Projects = () => {
         .proj-gallery-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 14px; }
         .proj-gallery-head h3 { font-family: 'Space Grotesk', sans-serif; font-size: 20px; color: var(--clr-text-primary); }
         .proj-gallery-close { width: 36px; height: 36px; border-radius: 10px; padding: 0; display: inline-flex; align-items: center; justify-content: center; }
+        .proj-gallery-groups { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+        .proj-group-btn { padding: 7px 12px; border-radius: 999px; font-size: 12px; font-weight: 600; border: 1px solid var(--clr-border); }
+        .proj-group-btn.active { border-color: var(--clr-border-hover); background: rgba(127, 179, 213, 0.15); color: var(--clr-text-primary); }
         .proj-gallery-stage { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; }
         .proj-gallery-image { width: 100%; max-height: min(62vh, 520px); object-fit: contain; border-radius: 14px; border: 1px solid var(--clr-border); background: linear-gradient(145deg, rgba(255,255,255,0.12), rgba(255,255,255,0.02)); }
         .proj-nav-btn { width: 40px; height: 40px; padding: 0; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; }
